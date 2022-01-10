@@ -5,13 +5,17 @@
 ### Installation & Execution:
 
 Clone the repo
+
 ```git clone --branch beta https://github.com/Adloya/TwitchCommunityReporter/```
 
 Install Depedencies by running "install npm packages.bat" for windows or execute this command
+
 ```npm i```
 
 Execute the node app
+
 ``node .`` or ``node twitchrep.js``
+
 It will be running in : localhost:8760
 (You can change the port in json/config.json)
 
