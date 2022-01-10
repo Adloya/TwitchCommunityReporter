@@ -1,0 +1,24 @@
+{
+  "name": "twitchcommunityreporter",
+  "version": "1.0.0",
+  "description": "An open-source program to list malicious twitch users",
+  "main": "twitchrep.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adloya/TwitchCommunityReporter.git"
+  },
+  "author": "Adloya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Adloya/TwitchCommunityReporter/issues"
+  },
+  "homepage": "https://github.com/Adloya/TwitchCommunityReporter#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "urlencoded-parser": "^1.0.0",
+    "ejs": "^3.1.5"
+  }
+}
