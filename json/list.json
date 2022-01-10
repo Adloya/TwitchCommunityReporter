@@ -1,0 +1,13 @@
+{
+    "DEBUG": {
+        "username": "DEBUG",
+        "reason": "Harrassement",
+        "where": "Username and/or Profile Picture",
+        "description": "No more information",
+        "reporter": "Bruh",
+        "repetitive": "Repetitive",
+        "accounts": "Has multiple accounts",
+        "firstdatetime": "2022-01-08 17:24:5",
+        "reports": 3
+    }
+}
