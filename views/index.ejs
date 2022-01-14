@@ -1,1 +1,187 @@
-bonjour bruh cum
+ <!--
+  _____                                      _ _           _______       _ _       _       _____                       _                    TM
+ / ____|                                    (_) |         |__   __|     (_) |     | |     |  __ \                     | |           BadCode
+| |     ___  _ __ ___  _ __ ___  _   _ _ __  _| |_ _   _     | |_      ___| |_ ___| |__   | |__) |___ _ __   ___  _ __| |_ ___ _ __ 
+| |    / _ \| '_ ` _ \| '_ ` _ \| | | | '_ \| | __| | | |    | \ \ /\ / / | __/ __| '_ \  |  _  // _ \ '_ \ / _ \| '__| __/ _ \ '__|
+| |___| (_) | | | | | | | | | | | |_| | | | | | |_| |_| |    | |\ V  V /| | || (__| | | | | | \ \  __/ |_) | (_) | |  | ||  __/ |   
+ \_____\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|_|\__|\__, |    |_| \_/\_/ |_|\__\___|_| |_| |_|  \_\___| .__/ \___/|_|   \__\___|_|   
+                                                    __/ |                                            | |                            
+                                                   |___/                                             |_|                            
+  -->
+ <!DOCTYPE html>
+ <html lang="fr-fr">
+
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport"
+     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" />
+   <title>Twitch Community Reporter</title>
+   <script src="https://kit.fontawesome.com/93c6a938c5.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous" />
+     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+   <style>
+     body {
+       background-color: #181818;
+       color: white;
+     }
+
+     .content,
+     .title {
+       padding-left: 20px;
+       padding-top: 10px;
+     }
+
+     .title {
+       padding-top: 20px;
+       font-size: 27px;
+     }
+
+     .important-red {
+       color: red;
+     }
+
+     .header {
+       background-color: #282828;
+       border-radius: 20px;
+       margin-top: 15px;
+       box-shadow: 30px 22px 40px 7px rgba(0, 0, 0, 0.75);
+       -webkit-box-shadow: 30px 22px 40px 7px rgba(0, 0, 0, 0.75);
+       -moz-box-shadow: 30px 22px 40px 7px rgba(0, 0, 0, 0.75);
+     }
+
+     button {
+       border-radius: 10px;
+       font-size: 20px;
+     }
+
+     footer {
+       text-align: center;
+     }
+
+     footer a {
+       text-decoration: none;
+     }
+
+     footer a:hover {
+       color: blue;
+       text-decoration: underline;
+     }
+
+     input {
+       background-color: yellow;
+       box-shadow: 14px 11px 40px 7px rgba(0, 0, 0, 0.5);
+       -webkit-box-shadow: 14px 11px 40px 7px rgba(0, 0, 0, 0.5);
+       -moz-box-shadow: 14px 11px 40px 7px rgba(0, 0, 0, 0.5);
+     }
+
+     select {
+       box-shadow: 14px 11px 40px 7px rgba(0, 0, 0, 0.5);
+       -webkit-box-shadow: 14px 11px 40px 7px rgba(0, 0, 0, 0.5);
+       -moz-box-shadow: 14px 11px 40px 7px rgba(0, 0, 0, 0.5);
+     }
+
+     button {
+       box-shadow: 14px 11px 25px 7px rgba(0, 0, 0, 0.69);
+       -webkit-box-shadow: 14px 11px 25px 7px rgba(0, 0, 0, 0.69);
+       -moz-box-shadow: 14px 11px 25px 7px rgba(0, 0, 0, 0.69);
+     }
+
+     @media (max-width: 150em) {
+      .spaced1 {
+        margin-left: 15%;
+        margin-right: 15%;
+      }
+    }
+
+    @media (max-width: 200em) {
+      .spaced1 {
+        margin-left: 14%;
+        margin-right: 14%;
+      }
+    }
+
+    @media (max-width: 100em) {
+      .spaced1 {
+        margin-left: 14%;
+        margin-right: 14%;
+      }
+    }
+
+    @media (max-width: 80em) {
+      .spaced1 {
+        margin-left: 13%;
+        margin-right: 13%;
+      }
+    }
+
+    @media (max-width: 50em) {
+      .spaced1 {
+        margin-left: 12%;
+        margin-right: 12%;
+      }
+    }
+
+    @media (max-width: 35em) {
+      .spaced1 {
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+    }
+
+    @media (max-width: 25em) {
+      .spaced1 {
+        margin-left: 8%;
+        margin-right: 8%;
+      }
+    }
+
+    .title {
+      text-align: center;
+      align-items: center;
+    }
+
+    .pad4 {
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    .menuLnk {
+      color: gray;
+      text-decoration: none;
+    }
+   </style>
+ </head>
+
+ <body>
+   <div class="container">
+     <div class="header">
+       <h1 class="title">Report an Twitch user</h1>
+       <br />
+     </div>
+     <div class="header pad4">
+       <a href="report" class="spaced1 menuLnk">Report</a><a href="list" class="spaced1 menuLnk">Reports</a><a
+         href="about" class="spaced1 menuLnk">About</a>
+     </div>
+     <br />
+     <br>
+
+     <footer>
+       <p>Please not use this app maliciously, report people that have been causing problems. This app is not affiliated
+         with Twitch or Amazon</p>
+       <!-- <p>
+            ⭐ - Kindly hosted on
+            <a href="https://github.com/azawat7">azawat7's</a> VPS
+          </p> -->
+       <p>
+         Made with ❤ in France by Adloya
+       </p>
+     </footer>
+     </form>
+   </div>
+ </body>
+
+ </html>

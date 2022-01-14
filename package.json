@@ -17,8 +17,12 @@
   },
   "homepage": "https://github.com/Adloya/TwitchCommunityReporter#readme",
   "dependencies": {
+    "ejs": "^3.1.5",
     "express": "^4.17.2",
-    "urlencoded-parser": "^1.0.0",
-    "ejs": "^3.1.5"
+    "path": "^0.12.7",
+    "urlencoded-parser": "^1.0.0"
+  },
+  "devDependencies": {
+    "serve-favicon": "^2.5.0"
   }
 }

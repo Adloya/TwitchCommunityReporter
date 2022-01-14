@@ -7,7 +7,7 @@
 //                                                                                        __/ |               | |                            
 //                                                                                       |___/                |_|                            
 // 2021 - Adloya -- MIT License
-// Hello world !
+// Hello open-source world !
 
 
 // Librairies
@@ -15,14 +15,14 @@ const fs = require('fs')
 const express = require('express');
 const webapp = express()
 const bodyParser = require("body-parser")
-const util = require('util');
-const log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'w'});
-const ejs = require('ejs');
-
+const favicon = require("serve-favicon")
+const path = require('path')
 
 // Variables
 const config = require("./json/config.json")
-var replog_file = fs.createWriteStream(__dirname + '/logs/latest_reports.log', {flags : 'w'});
+var replog_file = fs.createWriteStream(__dirname + '/logs/latest_reports.log', {
+    flags: 'w'
+});
 const list = require("./json/list.json")
 
 let date_ob = new Date();
@@ -34,21 +34,30 @@ let minutes = date_ob.getMinutes();
 let seconds = date_ob.getSeconds();
 
 
-// Functions
+// Log Functions
 function CF(msg) {
     replog_file.write(msg + '\n');
     console.log(msg + '\n');
 }
+
 function F(msg) {
     replog_file.write(msg + '\n');
 }
+
 function C(msg) {
     console.log(msg + '\n');
 }
 
+function ERRLOG(error) {
+    C(`[!] (err) An error occured : ` + error);
+    F(`[!] Stopping the program beacause of an error. More informations in the console.`);
+}
+
+
+// Saving lists
 function SaveLists() {
     fs.writeFile("./json/list.json", JSON.stringify(list, null, 4), (err) => {
-        if (err) CF(`[!] Une erreur est survenue (list_error)` + err);
+        if (err) ERRLOG(err);
     });
 }
 
@@ -59,11 +68,13 @@ webapp.set('view engine', 'ejs')
 
 
 // Formulaire
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({
+    extended: false
+})
 
 
-// Initialisation Pages EJS
-setInterval(function() {
+// EJS Init
+setInterval(function () {
     webapp.get('/', (req, res) => {
         res.render('index')
     })
@@ -74,13 +85,16 @@ setInterval(function() {
         res.render('report')
     })
     webapp.get('/list', (req, res) => {
-       res.render('list')
+        res.render('list')
     })
 }, 500);
 
+webapp.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-webapp.post('/report', urlencodedParser, [
-], (req, res) => {
+
+// Get report data
+webapp.post('/report', urlencodedParser, [], (req, res) => {
+    // Variables
     let who = "Who is reporting?";
     let username = "Who is reported?";
     let problem = "What is the probelem ?";
@@ -89,23 +103,23 @@ webapp.post('/report', urlencodedParser, [
     let more = "One more thing ?";
     let repetitive = "Is it repetitive ?";
 
-    if(req.body.who) who = req.body.who
-    if(req.body.username) username = req.body.username
-    if(req.body.problem) problem = req.body.problem
-    if(req.body.where) where = req.body.where
-    if(req.body.accounts) accounts = req.body.accounts
-    if(req.body.more) more = req.body.more
-    if(req.body.repetitive) repetitive = req.body.repetitive
+    // Get data and put them into variables
+    if (req.body.who) who = req.body.who
+    if (req.body.username) username = req.body.username
+    if (req.body.problem) problem = req.body.problem
+    if (req.body.where) where = req.body.where
+    if (req.body.accounts) accounts = req.body.accounts
+    if (req.body.more) more = req.body.more
+    if (req.body.repetitive) repetitive = req.body.repetitive
+    if (more = "One more thing ?") more = "No more information"
 
-    if(more = "One more thing ?") more = "No more information"
-
-    if(list[username]) {
+    // Save data into the list (New report or repeting report)
+    if (list[username]) {
         list[username]["reports"] += 1
         SaveLists();
 
         CF("[+] " + username + " was reported " + list[username]["reports"] + " times (" + username + "," + problem + "," + where + "," + more + "," + who + "," + repetitive + "," + accounts + ")")
-    }
-    else if(!list[username]){
+    } else if (!list[username]) {
         list[username] = {}
         list[username]["username"] = username
         list[username]["reason"] = problem
@@ -123,6 +137,11 @@ webapp.post('/report', urlencodedParser, [
 })
 
 
-// End Tasks
+// Save Lists and start the webapp
 SaveLists();
-webapp.listen(config.port, () => CF(`[i] Webapp[LISTENING] on port ${config.port} (http://localhost:${config.port})`));
+webapp.listen(config.port, () => {
+    CF(`[i] Webapp[LISTENING] on port ${config.port} `)
+    if (config.debug) {
+        C(`http://localhost:${config.port}`)
+    }
+});
